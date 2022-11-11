@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Volvo240 extends Car{
-
+ 
     public final static double trimFactor = 1.25;
     
     // Constructor
@@ -21,21 +21,47 @@ public class Volvo240 extends Car{
     }
 
     public void incrementSpeed(double amount){
-        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
+        if(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()) > this.getEnginePower()){
+            setCurrentSpeed(this.getEnginePower());
+        }
+        else{
+            setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
+        }
     }
 
     public void decrementSpeed(double amount){
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+        if(Math.max(getCurrentSpeed() - speedFactor() * amount, 0) < 0){
+            setCurrentSpeed(0);
+        }
+        else{
+            setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+        }
     }
 
-    // TODO fix this method according to lab pm
+    // TODO fix tholwss methgrend according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
-    }
+        if (amount < 1){
+            incrementSpeed(1);
+        }
+        else if(amount > 0){
+            incrementSpeed(0);
+        }
+        else{
+            incrementSpeed(amount);
+        }
+        }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        if (amount < 1){
+            decrementSpeed(1);
+        }
+        else if(amount > 0){
+            decrementSpeed(0);
+        }
+        else{
+            decrementSpeed(amount);
+        }
     }
 
 
