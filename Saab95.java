@@ -32,7 +32,7 @@ public class Saab95 extends Car{
     }
 
     public void incrementSpeed(double amount){
-        if (getCurrentSpeed() + speedFactor() * amount > 125){
+        if (getCurrentSpeed() + speedFactor() * amount > this.getEnginePower()){
             setCurrentSpeed(this.getEnginePower());
         }
         else{

@@ -1,8 +1,8 @@
 import java.awt.*;
-
+ 
 public abstract class Car implements Movable {
 
-    // Shared Attributes
+    // Howls gren btw
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
