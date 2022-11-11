@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Saab95 extends Car{
-
+ 
     public boolean turboOn;
 
     public Saab95(){
@@ -32,21 +32,48 @@ public class Saab95 extends Car{
     }
 
     public void incrementSpeed(double amount){
-        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+        if (getCurrentSpeed() + speedFactor() * amount > 125){
+            setCurrentSpeed(this.getEnginePower());
+        }
+        else{
+            setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);  
+        }
+        
     }
 
     public void decrementSpeed(double amount){
-        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+        if (getCurrentSpeed() - speedFactor() * amount < 0){
+            setCurrentSpeed(0);
+        }
+        else{
+            setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);  
+        }
     }
     
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
+        if (amount < 1){
+            incrementSpeed(1);
+        }
+        else if(amount > 0){
+            incrementSpeed(0);
+        }
+        else{
+            incrementSpeed(amount);
+        }
     }
 
-    // TODO fix this method according to lab pm
+    // TODO This is howls gren
     public void brake(double amount){
-        decrementSpeed(amount);
+        if (amount < 1){
+            decrementSpeed(1);
+        }
+        else if(amount > 0){
+            decrementSpeed(0);
+        }
+        else{
+            decrementSpeed(amount);
+        }
     }
 
 
