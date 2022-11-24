@@ -1,5 +1,4 @@
 package cars;
-import java.math.*;
 
 public class Platform {
     
