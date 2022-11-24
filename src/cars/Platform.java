@@ -8,11 +8,14 @@ public class Platform {
     private boolean isRaised;
 
 
+    // Constructor
     Platform() {
         this.tiltAngle = 0;
         this.isRaised = false;
         this.tiltAngleLimit = 70;
     }
+
+    ////// Methods //////
 
     public void raisePlatform() {
         int newAngle = Math.min(tiltAngleLimit, getTiltAngle() + 1);
@@ -23,6 +26,10 @@ public class Platform {
         int newAngle = Math.max(0, getTiltAngle() - 1);
         setTiltAngle(newAngle);
     }
+
+
+
+    ////// GETTERS AND SETTERS ///////
 
     public int getTiltAngle() {
         return tiltAngle;
