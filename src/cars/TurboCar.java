@@ -1,18 +1,16 @@
 package cars;
+
 import java.awt.*;
 
-public class Saab95 extends Car {
-
-    // Model attributes
+public abstract class TurboCar extends Car {
+    
     private boolean turboOn;
 
-    // Constructor
-    public Saab95() {
-        
-        super(2, 125.0, Color.red, "Saab95");
-        turboOn = false;
-
+    TurboCar(int nrDoors, double enginePower, Color color, String modelName) {
+        super(nrDoors, enginePower, color, modelName);
+        this.turboOn = false;
     }
+
 
     // Methods
     public void setTurboOn() {
@@ -21,7 +19,7 @@ public class Saab95 extends Car {
 
     public void setTurboOff() {
         turboOn = false;
-    }
+    }    
 
     protected double speedFactor() {
         double turbo = 1;
