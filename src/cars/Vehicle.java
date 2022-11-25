@@ -4,7 +4,7 @@ import java.awt.*;
 
 public abstract class Vehicle implements Movable {
 
-    ////// Instance Attributes //////
+    /////// Instance Attributes ///////
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
