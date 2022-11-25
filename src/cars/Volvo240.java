@@ -8,7 +8,7 @@ public class Volvo240 extends Car {
     // Constructor
     public Volvo240() {
         super(4, 100.0, Color.black, "Volvo240");
-        TrimEngine engine = new TrimEngine(getEnginePower());
+        this.engine = new TrimEngine(getEnginePower());
     }
 
     public double speedFactor() {

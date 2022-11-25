@@ -52,13 +52,20 @@ public class VehicleTest {
     }
 
     @Test
-    public void turn_turns_vehicle_correctly() {
+    public void turn_left_should_turn_vehicle_correctly() {
 
         Volvo240 volvo = new Volvo240();
         volvo.turnLeft();
         assertEquals(new Point(-1,0), volvo.getDirection());
+
+    }
+
+    @Test
+    public void turn_right_should_turn_vehicle_correctly() {
+
+        Volvo240 volvo = new Volvo240();
         volvo.turnRight();
-        assertEquals(new Point(0,1), volvo.getDirection());
+        assertEquals(new Point(1,0), volvo.getDirection());
     }
 
     @Test

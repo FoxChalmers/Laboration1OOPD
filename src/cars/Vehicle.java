@@ -58,10 +58,6 @@ public abstract class Vehicle implements Movable {
         return currentSpeed;
     }
 
-    private void setCurrentSpeed(double currentSpeed) {
-        this.currentSpeed = currentSpeed;
-    }
-
     public Color getColor() {
         return color;
     }

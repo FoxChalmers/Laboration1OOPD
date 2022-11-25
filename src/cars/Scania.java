@@ -1,7 +1,7 @@
 package cars;
 import java.awt.*;
 
-public class Scania extends Truck implements HasPlatform {
+public class Scania extends Truck {
     
     private Platform platform;
 
@@ -16,7 +16,7 @@ public class Scania extends Truck implements HasPlatform {
     public void raisePlatform() {
 
         setStationaryState();
-        
+
         if (getIsStationary()) {
             platform.raisePlatform();
         }
@@ -47,6 +47,7 @@ public class Scania extends Truck implements HasPlatform {
 
         if (platform.isRaised()) {
             gas(1);
+            setStationaryState();
         }
         else {
             throw new IllegalStateException();
