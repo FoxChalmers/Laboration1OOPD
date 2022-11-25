@@ -1,13 +1,12 @@
 package cars;
 
-import java.awt.*;
-
-public abstract class TurboCar extends Car {
+public class TurboEngine {
     
     private boolean turboOn;
+    private double enginePower;
 
-    TurboCar(int nrDoors, double enginePower, Color color, String modelName) {
-        super(nrDoors, enginePower, color, modelName);
+    TurboEngine(double enginePower) {
+        this.enginePower = enginePower; 
         this.turboOn = false;
     }
 
@@ -24,7 +23,7 @@ public abstract class TurboCar extends Car {
         double turbo = 1;
         if (turboOn)
             turbo = 1.3;
-        return getEnginePower() * 0.01 * turbo;
+        return enginePower * 0.01 * turbo;
     }
 
 }

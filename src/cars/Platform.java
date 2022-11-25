@@ -33,6 +33,17 @@ public class Platform {
     public boolean isRaised() {
         return isRaised;
     }
+
+    public void setisRaised() {
+
+        if (tiltAngle == 0) {
+            isRaised = true;
+        }
+        else {
+            isRaised = false;
+        }
+
+    }
     
 
 

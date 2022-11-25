@@ -14,15 +14,44 @@ public class Scania extends Truck implements HasPlatform {
     // Platform methods
 
     public void raisePlatform() {
-        platform.raisePlatform();
+
+        setStationaryState();
+        
+        if (getIsStationary()) {
+            platform.raisePlatform();
+        }
+        else {
+            throw new IllegalStateException();
+        }
+
     }
 
     public void lowerPlatform() {
-        platform.lowerPlatform();
+
+        setStationaryState();
+
+        if (getIsStationary()) {
+            platform.lowerPlatform();
+        }
+        else {
+            throw new IllegalStateException();
+        }
     }
 
     public boolean isRaised() {
         return platform.isRaised();
+    }
+
+    @Override
+    public void gas(double amount) {
+
+        if (platform.isRaised()) {
+            gas(1);
+        }
+        else {
+            throw new IllegalStateException();
+        }
+        
     }
 
 }

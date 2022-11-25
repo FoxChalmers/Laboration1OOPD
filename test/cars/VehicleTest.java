@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.Test;
 
+import javafx.geometry.Point2D;
+
 public class VehicleTest {
     
     @Test
@@ -38,17 +40,26 @@ public class VehicleTest {
 
     }
 
+
     @Test
-    public void turn_should_change_direction() {
+    public void move_should_change_position_correctly() {
 
         Volvo240 volvo = new Volvo240();
-        Point directionOne = volvo.getDirection();
-        volvo.turnLeft();
-        Point directionTwo = volvo.getDirection();
-        assertNotEquals(directionOne, directionTwo);
-
+        volvo.gas(1);
+        volvo.move();
+        Point newCoordinate = volvo.getCoordinate();
+        assertEquals(new Point(0,1), (newCoordinate));
     }
 
+    @Test
+    public void turn_turns_vehicle_correctly() {
+
+        Volvo240 volvo = new Volvo240();
+        volvo.turnLeft();
+        assertEquals(new Point(-1,0), volvo.getDirection());
+        volvo.turnRight();
+        assertEquals(new Point(0,1), volvo.getDirection());
+    }
 
     @Test
     public void stop_engine_should_make_current_speed_zero() {
