@@ -94,20 +94,8 @@ public abstract class Vehicle implements Movable {
         this.y = y;
     }
 
-    protected int getDirectionIndex() {
-        return directionIndex;
-    }
-
-    protected void setDirectionIndex(int directionIndex) {
-        this.directionIndex = directionIndex;
-    }
-
-    protected Point[] getDirectionArray() {
-        return directions.clone();
-    }
-
-    protected Point getDirection() {
-        return directions[getDirectionIndex()];
+    public Point getDirection() {
+        return directions[directionIndex];
     }
 
     public Boolean getIsStationary() {
@@ -136,34 +124,34 @@ public abstract class Vehicle implements Movable {
     }
 
     // Abstract methods
-    abstract protected double speedFactor();
+    abstract public double speedFactor();
 
     // Implementation of Movable
 
     public void move() {
 
         // Get direction as point (dx, dy)
-        Point direction = getDirectionArray()[getDirectionIndex()];
-        int dx = (int) direction.getX();
-        int dy = (int) direction.getY();
+        Point direction = directions[directionIndex];
+        int dx = (int) direction.x;
+        int dy = (int) direction.y;
 
         // Calculate new coordinates
-        int newX = x + dx * (int) getCurrentSpeed();
-        int newY = y + dy * (int) getCurrentSpeed();
+        int newX = x + dx * (int) currentSpeed;
+        int newY = y + dy * (int) currentSpeed;
 
         // Set coordinates
-        setX(newX);
-        setY(newY);
+        x = newX;
+        y = newY;
 
     }
 
     // Change active index in Direction Array to (current index - 1).
     public void turnLeft() {
 
-        if (getDirectionIndex() == 0) {
-            setDirectionIndex(getDirectionArray().length - 1);
+        if (directionIndex == 0) {
+            directionIndex = directions.length - 1;
         } else {
-            setDirectionIndex(getDirectionIndex() - 1);
+            directionIndex = directionIndex++;
         }
 
     }
@@ -171,10 +159,10 @@ public abstract class Vehicle implements Movable {
     // Change active index in Direction Array to (current index + 1).
     public void turnRight() {
 
-        if (getDirectionIndex() == getDirectionArray().length - 1) {
-            setDirectionIndex(0);
+        if (directionIndex == directions.length - 1) {
+            directionIndex = 0;
         } else {
-            setDirectionIndex(getDirectionIndex() + 1);
+            directionIndex = directionIndex + 1;
         }
 
     }
@@ -202,13 +190,13 @@ public abstract class Vehicle implements Movable {
     }
 
     // Increase speed but make sure it never goes above Engine Power.
-    protected void incrementSpeed(double amount) {
-        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
+    private void incrementSpeed(double amount) {
+        currentSpeed = Math.min(currentSpeed + speedFactor() * amount, enginePower);
     }
 
     // Decrease speed but make sure it never goes below 0.
-    protected void decrementSpeed(double amount) {
-        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    private void decrementSpeed(double amount) {
+        currentSpeed = Math.max(currentSpeed - speedFactor() * amount, 0);
     }
 
 }
