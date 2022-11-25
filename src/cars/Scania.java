@@ -1,35 +1,29 @@
 package cars;
 import java.awt.*;
+import java.lang.reflect.GenericSignatureFormatError;
 
-public class Scania extends Car {
+public class Scania extends Truck implements HasPlatform {
     
-    Platform platform;
-    Boolean isStationary;
+    private Platform platform;
 
     public Scania() {
         super(2, 200, Color.RED, "Scania");
         this.platform = new Platform();
-        this.isStationary = true;
-    }
-
-    // FIX (Should be implemented differently?)
-    public double speedFactor() {
-        return getEnginePower() * 0.01 ;
-    }
-
-    public void setStationaryState() {
-        if (getCurrentSpeed() == 0) {
-            isStationary = true;
-        }
-        else {
-            isStationary = false;
-        }
     }
 
 
+    // Platform methods
 
-    
+    public void raisePlatform() {
+        platform.raisePlatform();
+    }
 
+    public void lowerPlatform() {
+        platform.lowerPlatform();
+    }
 
+    public boolean isRaised() {
+        return platform.isRaised();
+    }
 
 }

@@ -11,7 +11,6 @@ public abstract class TurboCar extends Car {
         this.turboOn = false;
     }
 
-
     // Methods
     public void setTurboOn() {
         turboOn = true;

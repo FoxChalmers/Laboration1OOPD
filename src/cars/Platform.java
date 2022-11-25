@@ -17,35 +17,31 @@ public class Platform {
     ////// Methods //////
 
     public void raisePlatform() {
-        int newAngle = Math.min(tiltAngleLimit, getTiltAngle() + 1);
-        setTiltAngle(newAngle);
+        int newAngle = Math.min(tiltAngleLimit, tiltAngle + 1);
+        tiltAngle = newAngle;
     }
 
     public void lowerPlatform() {
-        int newAngle = Math.max(0, getTiltAngle() - 1);
-        setTiltAngle(newAngle);
+        int newAngle = Math.max(0, tiltAngle - 1);
+        tiltAngle = newAngle;
+    }
+
+    public boolean setStationaryState(double currentSpeed ) {
+        if (currentSpeed == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
 
     ////// GETTERS AND SETTERS ///////
 
-    public int getTiltAngle() {
-        return tiltAngle;
-    }
-
-    public void setTiltAngle(int tiltAngle) {
-        this.tiltAngle = tiltAngle;
-    }
-
     public boolean isRaised() {
         return isRaised;
     }
-
-    public void setRaised(boolean isRaised) {
-        this.isRaised = isRaised;
-    }
-
     
 
 
