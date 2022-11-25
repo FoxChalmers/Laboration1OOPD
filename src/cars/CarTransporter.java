@@ -1,4 +1,7 @@
 
+package cars;
+import java.awt.*;
+
 
 public class CarTransporter extends Truck{
 
@@ -7,11 +10,11 @@ public class CarTransporter extends Truck{
     private int storageLimitation = 10;
 
     CarTransporter(int nrDoors, double enginePower, Color color, String modelName, boolean isLoaded){
+        super(nrDoors, enginePower, color, modelName);
         this.platform = new Platform();
         this.isLoaded = isLoaded;
-        super(nrDoors, enginePower, color, modelName);
+        
     }
-
 
     public double speedFactor() {
         return getEnginePower() * 0.005;
