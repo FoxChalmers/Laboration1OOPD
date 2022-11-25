@@ -27,7 +27,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void gas_should_change_coordinates() {
+    public void gas_should_increase_speed_correctly() {
 
         Volvo240 volvo = new Volvo240();
         Point oldCoordinate = volvo.getCoordinate();
@@ -49,29 +49,6 @@ public class VehicleTest {
 
     }
 
-  /*  @Test
-    public void incrementSpeed_should_increase_current_speed() {
-
-        Volvo240 volvo = new Volvo240();
-        volvo.incrementSpeed(10);
-        double oldSpeed = volvo.getCurrentSpeed();
-        volvo.incrementSpeed(5);
-        double newSpeed = volvo.getCurrentSpeed();
-        assertTrue(newSpeed > oldSpeed);
-
-    }*/
-
-   /*  @Test
-    public void decrementSpeed_should_decrease_current_sped() {
-
-        Volvo240 volvo = new Volvo240();
-        volvo.incrementSpeed(100);
-        double oldSpeed = volvo.getCurrentSpeed();
-        volvo.brake(1);
-        double newSpeed = volvo.getCurrentSpeed();
-        assertTrue(newSpeed < oldSpeed);
-
-    }*/
 
     @Test
     public void stop_engine_should_make_current_speed_zero() {

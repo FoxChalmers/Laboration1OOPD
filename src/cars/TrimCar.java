@@ -2,7 +2,7 @@ package cars;
 
 import java.awt.*;
 
-public class TrimCar extends Car {
+public abstract class TrimCar extends Car {
     
     private final static double trimFactor = 1.25;
     

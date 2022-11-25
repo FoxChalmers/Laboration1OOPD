@@ -1,6 +1,5 @@
 package cars;
 import java.awt.*;
-import java.lang.reflect.GenericSignatureFormatError;
 
 public class Scania extends Truck implements HasPlatform {
     
