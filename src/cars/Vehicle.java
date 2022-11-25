@@ -124,7 +124,7 @@ public abstract class Vehicle implements Movable {
     }
 
     // Abstract methods
-    abstract public double speedFactor();
+    protected abstract double speedFactor();
 
     // Implementation of Movable
 

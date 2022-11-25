@@ -47,7 +47,6 @@ public class VehicleTest {
         Point directionTwo = volvo.getDirection();
         assertNotEquals(directionOne, directionTwo);
 
-
     }
 
   /*  @Test

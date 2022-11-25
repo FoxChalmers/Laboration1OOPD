@@ -26,15 +26,6 @@ public class Platform {
         tiltAngle = newAngle;
     }
 
-    public boolean setStationaryState(double currentSpeed ) {
-        if (currentSpeed == 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
 
 
     ////// GETTERS AND SETTERS ///////
