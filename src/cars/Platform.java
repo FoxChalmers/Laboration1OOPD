@@ -4,13 +4,11 @@ public class Platform {
     
     private int tiltAngle;
     private int tiltAngleLimit;
-    private boolean isRaised;
 
 
     // Constructor
     Platform() {
         this.tiltAngle = 0;
-        this.isRaised = false;
         this.tiltAngleLimit = 70;
     }
 
@@ -31,18 +29,23 @@ public class Platform {
     ////// GETTERS AND SETTERS ///////
 
     public boolean isRaised() {
-        return isRaised;
-    }
-
-    public void setisRaised() {
 
         if (tiltAngle == 0) {
-            isRaised = true;
+            return false;
         }
         else {
-            isRaised = false;
+            return true;
         }
 
+    }
+
+
+    public int getTiltAngleLimit() {
+        return tiltAngleLimit;
+    }
+
+    public int getTiltAngle() {
+        return tiltAngle;
     }
     
 

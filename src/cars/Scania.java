@@ -15,9 +15,7 @@ public class Scania extends Truck {
 
     public void raisePlatform() {
 
-        setStationaryState();
-
-        if (getIsStationary()) {
+        if (isStationary()) {
             platform.raisePlatform();
         }
         else {
@@ -28,29 +26,38 @@ public class Scania extends Truck {
 
     public void lowerPlatform() {
 
-        setStationaryState();
-
-        if (getIsStationary()) {
+        if (isStationary()) {
             platform.lowerPlatform();
         }
         else {
             throw new IllegalStateException();
         }
+
     }
 
     public boolean isRaised() {
         return platform.isRaised();
     }
 
+    public int getTiltAngleLimit() {
+        return platform.getTiltAngleLimit();
+    }
+
+    public int getTiltAngle() {
+        return platform.getTiltAngle();
+    }
+
+
+    // FIX (Code duplication)
+    
     @Override
     public void gas(double amount) {
 
         if (platform.isRaised()) {
-            gas(1);
-            setStationaryState();
+            throw new IllegalStateException();
         }
         else {
-            throw new IllegalStateException();
+            super.gas(amount);
         }
         
     }

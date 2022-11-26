@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.Test;
 
-import javafx.geometry.Point2D;
-
 public class VehicleTest {
     
     @Test

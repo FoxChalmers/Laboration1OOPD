@@ -1,5 +1,4 @@
 package cars;
-import java.awt.*;
 
 import static org.junit.Assert.*;
 

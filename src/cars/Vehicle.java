@@ -11,7 +11,6 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private Boolean isStationary; // Vehicle is stationary boolean.
 
 
     private int x, y = 0; // Coordinates
@@ -94,16 +93,12 @@ public abstract class Vehicle implements Movable {
         return directions[directionIndex];
     }
 
-    public Boolean getIsStationary() {
-        return isStationary;
-    }
-
-    public void setStationaryState() {
+    public boolean isStationary() {
         if (currentSpeed == 0) {
-            isStationary = true;
+            return true;
         }
         else {
-            isStationary = false;
+            return false;
         }
     }
 
