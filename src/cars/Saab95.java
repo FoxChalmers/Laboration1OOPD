@@ -1,5 +1,5 @@
 package cars;
-import java.awt.*;
+import java.awt.Color;
 
 public class Saab95 extends Car {
 

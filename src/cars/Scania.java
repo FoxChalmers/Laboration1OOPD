@@ -1,5 +1,5 @@
 package cars;
-import java.awt.*;
+import java.awt.Color;
 
 public class Scania extends Truck {
     
@@ -48,8 +48,8 @@ public class Scania extends Truck {
     }
 
 
-    // FIX (Code duplication)
-    
+
+    // Overrides gas from superclass (Truck) and checks that platform is not raised otherwise throws exception.
     @Override
     public void gas(double amount) {
 

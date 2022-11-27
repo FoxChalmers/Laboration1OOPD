@@ -47,6 +47,12 @@ public class Platform {
     public int getTiltAngle() {
         return tiltAngle;
     }
+
+    public void setTiltAngle(int tiltAngle) {
+        this.tiltAngle = tiltAngle;
+    }
+
+    
     
 
 
