@@ -1,6 +1,6 @@
 package cars;
 import java.awt.Color;
-public class CarTransporter extends Truck {
+public class CarTransporter extends Truck implements HasCarLoader  {
 
     // Attributes
     private Platform platform;
@@ -58,12 +58,14 @@ public class CarTransporter extends Truck {
     // gas from superclass.
     @Override
     public void gas(double amount) {
+
         if (platform.isRaised()) {
             super.gas(amount);
         }
         else {
             throw new IllegalStateException("Cannot gas when platform is down");
         }
+        
     }
 
 

@@ -1,8 +1,9 @@
 package cars;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.Test;
-import java.awt.Color;
 
 public class CarLoaderTest {
  
@@ -28,6 +29,11 @@ public class CarLoaderTest {
         Volvo240 volvo = new Volvo240();
         volvo.setX(21);
         assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(volvo));
+    }
+
+    @Test
+    public void cannot_create_carloader_with_negative_cars() {
+        assertThrows(IllegalStateException.class, () -> new CarRepairShop(-1, 0, 0));
     }
 
 }

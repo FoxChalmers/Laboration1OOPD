@@ -5,14 +5,20 @@ public class CarLoader {
 
     // Attributes
     private Stack<Car> carLoad = new Stack<Car>();     // Stack used to store loaded cars.
-    private int maxLoad;            // Max amount of cars allowed on the CarLoader.
-    private int loadedCars = 0;     // Amount of cars currently loaded.
-    private Vehicle vehicle;        // The vehicle on which the carloader is placed.
+    private int maxLoad;                               // Max amount of cars allowed on the CarLoader.
+    private int loadedCars = 0;                        // Amount of cars currently loaded.
+    private HasCarLoader object;                       // Object that has the CarLoader.
 
     // Constructor
-    CarLoader(int maxLoad, Vehicle vehicle) {
-        this.maxLoad = maxLoad;
-        this.vehicle = vehicle;
+    CarLoader(int maxLoad, HasCarLoader object) {
+
+        if (maxLoad > 0) {
+            this.maxLoad = maxLoad;
+            this.object = object;
+        }
+        else {
+            throw new IllegalStateException("CarLoader maxLoad must take a value above 0.");
+        }
     }
 
     public int getMaxLoad() {
@@ -21,7 +27,7 @@ public class CarLoader {
 
     // Calculates distance between car and vehicle.
     private double calculateDistanceToCar(Car car) {
-        double distance = Math.hypot(vehicle.getX() - car.getX(), vehicle.getY() - car.getY());
+        double distance = Math.hypot(object.getX() - car.getX(), object.getY() - car.getY());
         return distance;
     }
 
@@ -47,8 +53,8 @@ public class CarLoader {
             loadedCars--;
 
             // Sets position of car same as vehicle holding the carloader. but x += 20.
-            car.setX(vehicle.getX() + 20);
-            car.setY(vehicle.getY()); 
+            car.setX(object.getX() + 20);
+            car.setY(object.getY()); 
         }
         else {
             throw new IllegalStateException("Cannot unload empty CarLoader");
