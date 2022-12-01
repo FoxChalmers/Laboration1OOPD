@@ -20,12 +20,10 @@ public class CarTransporter extends Truck{
         return getEnginePower() * 0.005;
     }
 
-    // Making a list of cars which will or are loaded
-    Car[] storageList = new Car(10);
 
     // 
-    public boolean loadON(){
-        if(storageList < 10 && isLoaded == false){
+    public boolean loadON(Truck storageList){
+        if(storageList != storageLimitation && isLoaded == false){
             return true;
         } else {
             return false;
