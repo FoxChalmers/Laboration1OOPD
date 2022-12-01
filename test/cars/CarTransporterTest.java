@@ -2,7 +2,6 @@ package cars;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import java.awt.Color;
 
 public class CarTransporterTest {
     

@@ -1,7 +1,7 @@
 package cars;
 import java.awt.Color;
 
-public class Saab95 extends Car {
+public class Saab95 extends Vehicle implements Car {
 
     private TurboEngine engine;
 
