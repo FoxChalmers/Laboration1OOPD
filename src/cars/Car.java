@@ -1,8 +1,11 @@
 package cars;
 
-interface Car {
-    int getX();
-    int getY();
-    void setX(int x);
-    void setY(int y);
+import java.awt.*;
+
+public abstract class Car extends Vehicle {
+
+    Car(int nrDoors, double enginePower, Color color, String modelName) {
+        super(nrDoors, enginePower, color, modelName);
+    }
+
 }

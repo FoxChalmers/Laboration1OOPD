@@ -1,9 +1,8 @@
 package cars;
-
 import java.awt.Color;
 
-public class Scania extends Vehicle {
-
+public class Scania extends Truck {
+    
     private Platform platform;
 
     public Scania() {
@@ -11,13 +10,15 @@ public class Scania extends Vehicle {
         this.platform = new Platform();
     }
 
+
     // Platform methods
 
     public void raisePlatform() {
 
         if (isStationary()) {
             platform.raisePlatform();
-        } else {
+        }
+        else {
             throw new IllegalStateException();
         }
 
@@ -27,7 +28,8 @@ public class Scania extends Vehicle {
 
         if (isStationary()) {
             platform.lowerPlatform();
-        } else {
+        }
+        else {
             throw new IllegalStateException();
         }
 
@@ -45,21 +47,19 @@ public class Scania extends Vehicle {
         return platform.getTiltAngle();
     }
 
-    public double speedFactor() {
-        return getEnginePower() * 0.01;
-    }
 
-    // Overrides gas from superclass (Truck) and checks that platform is not raised
-    // otherwise throws exception.
+
+    // Overrides gas from superclass (Truck) and checks that platform is not raised otherwise throws exception.
     @Override
     public void gas(double amount) {
 
         if (platform.isRaised()) {
             throw new IllegalStateException();
-        } else {
+        }
+        else {
             super.gas(amount);
         }
-
+        
     }
 
 }
