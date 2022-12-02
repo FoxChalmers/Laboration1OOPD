@@ -51,6 +51,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
         } else {
             throw new IllegalStateException("Could not unload car. Requirements not fullfilled.");
         }
+        
     }
 
     // Overrides gas from superclass (Truck) and checks that platform is raised
