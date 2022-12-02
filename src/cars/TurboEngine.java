@@ -1,6 +1,6 @@
 package cars;
 
-public class TurboEngine {
+public class TurboEngine implements Engine {
     
     private boolean turboOn;
     private double enginePower;
