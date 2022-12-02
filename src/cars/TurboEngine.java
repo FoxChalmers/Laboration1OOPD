@@ -19,7 +19,7 @@ public class TurboEngine implements Engine {
         turboOn = false;
     }    
 
-    protected double speedFactor() {
+    public double speedFactor() {
         double turbo = 1;
         if (turboOn)
             turbo = 1.3;

@@ -1,6 +1,6 @@
 package cars;
 
-public class TrimEngine {
+public class TrimEngine implements Engine {
     
     private final static double trimFactor = 1.25;
     private double enginePower;

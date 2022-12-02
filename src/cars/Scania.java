@@ -49,7 +49,7 @@ public class Scania extends Vehicle {
         return getEnginePower() * 0.01;
     }
 
-    // Overrides gas from superclass (Truck) and checks that platform is not raised
+    // Overrides gas from superclass (Vehicle) and checks that platform is not raised
     // otherwise throws exception.
     @Override
     public void gas(double amount) {
