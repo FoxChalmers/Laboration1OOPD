@@ -4,7 +4,7 @@ import java.util.*;
 public class CarLoader {
 
     // Attributes
-    private Stack<Car> carLoad = new Stack<Car>();     // Stack used to store loaded cars.
+    private Stack<ACar> carLoad = new Stack<ACar>();     // Stack used to store loaded cars.
     private int maxLoad;                               // Max amount of cars allowed on the CarLoader.
     private int loadedCars = 0;                        // Amount of cars currently loaded.
     private HasCarLoader object;                       // Object that has the CarLoader.
@@ -26,14 +26,14 @@ public class CarLoader {
     }
 
     // Calculates distance between car and vehicle.
-    private double calculateDistanceToCar(Car car) {
+    private double calculateDistanceToCar(ACar car) {
         double distance = Math.hypot(object.getX() - car.getX(), object.getY() - car.getY());
         return distance;
     }
 
 
     // Loads car into CarLoader.
-    public void loadCar(Car car) {
+    public void loadCar(ACar car) {
 
         if (loadedCars < maxLoad && calculateDistanceToCar(car) < 20) {
             carLoad.push(car);
@@ -49,7 +49,7 @@ public class CarLoader {
     // Unloads the outer most car from CarLoader.
     public void unloadCar() {
         if (loadedCars != 0) {
-            Car car = carLoad.pop();
+            ACar car = carLoad.pop();
             loadedCars--;
 
             // Sets position of car same as vehicle holding the carloader. but x += 20.

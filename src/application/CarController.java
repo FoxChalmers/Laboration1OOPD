@@ -1,4 +1,3 @@
-package application;
 import cars.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;

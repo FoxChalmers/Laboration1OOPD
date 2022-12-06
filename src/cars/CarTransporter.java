@@ -33,7 +33,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
     }
 
     // Loads car if requirements are fullfilled. Otherwise prints in console.
-    public void loadCar(Car car) {
+    public void loadCar(ACar car) {
 
         if (!platform.isRaised()) {
             carLoader.loadCar(car);

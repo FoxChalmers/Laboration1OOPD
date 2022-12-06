@@ -1,6 +1,6 @@
 package cars;
 
-interface Car {
+public interface ACar {
     int getX();
     int getY();
     void setX(int x);

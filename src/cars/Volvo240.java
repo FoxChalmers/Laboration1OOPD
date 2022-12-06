@@ -1,7 +1,7 @@
 package cars;
 import java.awt.Color;
 
-public class Volvo240 extends Vehicle implements Car {
+public class Volvo240 extends Vehicle implements ACar {
     
     private TrimEngine engine;
 
