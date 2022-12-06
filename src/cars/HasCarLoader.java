@@ -1,6 +1,6 @@
 package cars;
 
-interface HasCarLoader {
+public interface HasCarLoader {
     void loadCar(Car car);
     void unloadCar();
     int getX();
