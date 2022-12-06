@@ -22,7 +22,7 @@ public abstract class Vehicle implements Movable {
 
     
     // Constructor
-    public Vehicle(int nrDoors, double enginePower, Color color, String modelName) {
+    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.currentSpeed = 0;
@@ -108,6 +108,7 @@ public abstract class Vehicle implements Movable {
 
     public void startEngine() {
         currentSpeed = 0.1;
+        System.out.println("Engine started");
     }
 
     public void stopEngine() {
@@ -133,6 +134,7 @@ public abstract class Vehicle implements Movable {
         // Set coordinates
         x = newX;
         y = newY;
+        System.out.println(this.getX());
 
     }
 
@@ -166,6 +168,7 @@ public abstract class Vehicle implements Movable {
         } else {
             incrementSpeed(amount);
         }
+
 
     }
 

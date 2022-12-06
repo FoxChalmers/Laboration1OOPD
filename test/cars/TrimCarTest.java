@@ -9,7 +9,7 @@ public class TrimCarTest {
     @Test
     public void gas_should_increase_speed_correctly() {
 
-      Volvo240 volvo = new Volvo240();
+      Volvo240 volvo = new Volvo240(0,0);
 
       double oldSpeed = volvo.getCurrentSpeed();
       volvo.gas(1);

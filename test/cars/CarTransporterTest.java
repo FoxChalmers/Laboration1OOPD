@@ -16,7 +16,7 @@ public class CarTransporterTest {
     public void carTransporter_will_not_load_car_if_ramp_is_up() {
         CarTransporter carTransporter = new CarTransporter();
         carTransporter.raiseRamp();
-        assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(new Volvo240()));
+        assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(new Volvo240(0,0)));
     }
 
 }

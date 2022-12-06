@@ -10,7 +10,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
 
     // Constructor
     CarTransporter() {
-        super(2, 200, Color.BLUE, "Car Transport");
+        super(2, 200, Color.BLUE, "Car Transport", 0, 0);
         this.platform = new Platform();
         this.carLoader = new CarLoader(8, this);
     }

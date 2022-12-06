@@ -18,15 +18,15 @@ public class CarLoaderTest {
         CarTransporter carTransporter = new CarTransporter();
 
         for (int i = 0; i < carTransporter.getMaxLoad(); i++) {
-            carTransporter.loadCar(new Volvo240());
+            carTransporter.loadCar(new Volvo240(0, 0));
         }
-        assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(new Volvo240()));
+        assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(new Volvo240(0, 0)));
     }
 
     @Test
     public void carloader_will_not_load_car_with_distance_over_20() {
         CarTransporter carTransporter = new CarTransporter();
-        Volvo240 volvo = new Volvo240();
+        Volvo240 volvo = new Volvo240(0, 0);
         volvo.setX(21);
         assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(volvo));
     }
