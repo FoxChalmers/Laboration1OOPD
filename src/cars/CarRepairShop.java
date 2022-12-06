@@ -11,7 +11,7 @@ public class CarRepairShop implements HasCarLoader {
         this.y = y;
     }
 
-    public void loadCar(ACar car) {
+    public void loadCar(Car car) {
         carLoader.loadCar(car);
     }
 

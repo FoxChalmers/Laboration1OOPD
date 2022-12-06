@@ -1,7 +1,7 @@
 package cars;
 
 interface HasCarLoader {
-    void loadCar(ACar car);
+    void loadCar(Car car);
     void unloadCar();
     int getX();
     int getY();

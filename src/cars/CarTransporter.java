@@ -33,7 +33,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
     }
 
     // Loads car if requirements are fullfilled. Otherwise prints in console.
-    public void loadCar(ACar car) {
+    public void loadCar(Car car) {
 
         if (!platform.isRaised()) {
             carLoader.loadCar(car);
@@ -51,7 +51,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
         } else {
             throw new IllegalStateException("Could not unload car. Requirements not fullfilled.");
         }
-
+        
     }
 
     // Overrides gas from superclass (Truck) and checks that platform is raised
