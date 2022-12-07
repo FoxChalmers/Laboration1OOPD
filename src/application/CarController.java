@@ -35,7 +35,7 @@ public class CarController {
 
         cc.vehicles.add(new Volvo240(0, 0));
         cc.vehicles.add(new Saab95(100, 0));
-        cc.vehicles.add(new Scania(100, 0));
+        cc.vehicles.add(new Scania(200, 0));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("vehiclesim 1.0", cc);
@@ -49,11 +49,11 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : vehicles) {
-                car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+            for (Vehicle vehicle : vehicles) {
+                vehicle.move();
+                int x = (int) Math.round(vehicle.getX());
+                int y = (int) Math.round(vehicle.getY());
+                frame.drawPanel.moveit(x,y, vehicle);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -90,10 +90,39 @@ public class CarController {
         }
     }
 
+    // Raises platform for all scanias once.
     void liftPlatform() {
         for (Vehicle vehicle: vehicles) {
-            if (vehicle instanceof HasPlatform) {
-                ;
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.raisePlatform();
+            }
+        }
+    }
+
+    void lowerPlatform() {
+        for (Vehicle vehicle: vehicles) {
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.lowerPlatform();
+            }
+        }
+    }
+
+    void TurboOn() {
+        for (Vehicle vehicle: vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOn();
+            }
+        }
+    }
+
+    void TurboOff() {
+        for (Vehicle vehicle: vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOff();
             }
         }
     }

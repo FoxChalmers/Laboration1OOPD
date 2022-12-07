@@ -10,14 +10,14 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
 
     // Constructor
     CarTransporter() {
-        super(2, 200, Color.BLUE, "Car Transport", 0, 0);
+        super(2, Color.BLUE, "Car Transport", new TrimEngine(100), 0, 0);
         this.platform = new Platform();
         this.carLoader = new CarLoader(8, this);
     }
 
     // Raises the ramp of CarTransport.
     public void raiseRamp() {
-        platform.setTiltAngle(platform.getTiltAngleLimit());
+        platform.raiseToTop();
     }
 
     // Will lower the ramp if CarTransporter is stationary. Otherwise throw
@@ -25,7 +25,7 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
     public void lowerRamp() {
 
         if (isStationary()) {
-            platform.setTiltAngle(0);
+            platform.lowerToBottom();
         } else {
             throw new IllegalStateException();
         }

@@ -7,7 +7,7 @@ public class Scania extends Vehicle {
     private Platform platform;
 
     public Scania(int x, int y) {
-        super(2, 200, Color.RED, "Scania", x, y);
+        super(2, Color.RED, "Scania", new TrimEngine(100), x, y);
         this.platform = new Platform();
     }
 

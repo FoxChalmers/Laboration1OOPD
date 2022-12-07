@@ -7,7 +7,7 @@ public class Saab95 extends Vehicle implements Car {
 
     // Constructor
     public Saab95(int x, int y) {
-        super(2, 125.0, Color.red, "Saab95", x, y);
+        super(2, Color.red, "Saab95", new TurboEngine(200), x, y);
         this.engine = new TurboEngine(getEnginePower());
     }
 

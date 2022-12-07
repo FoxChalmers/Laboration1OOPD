@@ -7,10 +7,10 @@ public abstract class Vehicle implements Movable {
     ////// Instance Attributes //////
 
     private int nrDoors; // Number of doors on the car
-    private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
+    private Engine engine;
 
 
     private int x, y = 0; // Coordinates
@@ -22,13 +22,15 @@ public abstract class Vehicle implements Movable {
 
     
     // Constructor
-    public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y) {
+    public Vehicle(int nrDoors, Color color, String modelName, Engine engine, int x, int y) {
         this.nrDoors = nrDoors;
-        this.enginePower = enginePower;
         this.currentSpeed = 0;
         this.color = color;
         this.modelName = modelName;
         directionIndex = 0;
+        this.engine = engine;
+        this.x = x;
+        this.y = y;
     }
 
     ////////////// GETTERS AND SETTERS ////////////////////
@@ -46,11 +48,7 @@ public abstract class Vehicle implements Movable {
     }
 
     public double getEnginePower() {
-        return enginePower;
-    }
-
-    public void setEnginePower(double enginePower) {
-        this.enginePower = enginePower;
+        return engine.getEnginePower();
     }
 
     public double getCurrentSpeed() {
@@ -63,6 +61,10 @@ public abstract class Vehicle implements Movable {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public Engine getEngine() {
+        return engine;
     }
 
     public String getModelName() {
@@ -107,11 +109,11 @@ public abstract class Vehicle implements Movable {
 
 
     public void startEngine() {
-        currentSpeed = 0.1;
-        System.out.println("Engine started");
+        engine.turnOnEngine();
     }
 
     public void stopEngine() {
+        engine.turnOffEngine();
         currentSpeed = 0;
     }
 
@@ -134,7 +136,6 @@ public abstract class Vehicle implements Movable {
         // Set coordinates
         x = newX;
         y = newY;
-        System.out.println(this.getX());
 
     }
 
@@ -165,8 +166,11 @@ public abstract class Vehicle implements Movable {
 
         if (amount < 0 || amount > 1) {
             throw new IllegalArgumentException();
-        } else {
+        } else if (engine.isOn()) {
             incrementSpeed(amount);
+        }
+        else {
+            throw new IllegalStateException();
         }
 
 
@@ -185,7 +189,7 @@ public abstract class Vehicle implements Movable {
 
     // Increase speed but make sure it never goes above Engine Power.
     private void incrementSpeed(double amount) {
-        currentSpeed = Math.min(currentSpeed + speedFactor() * amount, enginePower);
+        currentSpeed = Math.min(currentSpeed + speedFactor() * amount, engine.getEnginePower());
     }
 
     // Decrease speed but make sure it never goes below 0.

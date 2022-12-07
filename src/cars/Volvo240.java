@@ -2,17 +2,15 @@ package cars;
 import java.awt.Color;
 
 public class Volvo240 extends Vehicle implements Car {
-    
-    private TrimEngine engine;
+
 
     // Constructor
     public Volvo240(int x, int y) {
-        super(4, 100.0, Color.black, "Volvo240", x, y);
-        this.engine = new TrimEngine(getEnginePower());
+        super(4, Color.black, "Volvo240", new TrimEngine(150), x, y);
     }
 
     public double speedFactor() {
-        return engine.speedFactor();
+        return getEngine().speedFactor();
     }
 
 }

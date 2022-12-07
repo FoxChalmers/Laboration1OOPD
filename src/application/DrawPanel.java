@@ -5,6 +5,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import cars.Saab95;
+import cars.Scania;
+import cars.Vehicle;
+import cars.Volvo240;
+
 // This panel represent the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
@@ -19,13 +24,23 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-        saab95Point.x = x + 100;
-        saab95Point.y = y;
-        scaniaPoint.x = x + 200;
-        scaniaPoint.y = y;
+    void moveit(int x, int y, Vehicle vehicle){
+
+
+        if (vehicle instanceof Volvo240) {
+            volvoPoint.x = x;
+            volvoPoint.y = y;
+        }
+        else if (vehicle instanceof Saab95) {
+            saab95Point.x = x;
+            saab95Point.y = y;
+        }
+        else if (vehicle instanceof Scania) {
+            scaniaPoint.x = x;
+            scaniaPoint.y = y;
+        }
+
+        
     }
 
     // Initializes the panel and reads the images
@@ -59,7 +74,6 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null);
-        System.out.println(saab95Point.getX());
         g.drawImage(ScaniaImage, scaniaPoint.x, scaniaPoint.y, null);
     }
 }
