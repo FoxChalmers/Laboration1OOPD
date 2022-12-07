@@ -1,3 +1,5 @@
+package application;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -13,12 +15,12 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class VehicleView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    VehicleModel vehicleModel;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -40,16 +42,16 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
-        initComponents(framename);
+    public VehicleView(VehicleModel model){
+        this.vehicleModel = model;
+        initComponents();
     }
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
-    private void initComponents(String title) {
+    private void initComponents() {
 
-        this.setTitle(title);
+        this.setTitle("Goten Tag");
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 

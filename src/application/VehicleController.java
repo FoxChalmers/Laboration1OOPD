@@ -1,3 +1,5 @@
+package application;
+
 import cars.*;
 import javax.swing.*;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class VehicleController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -23,25 +25,14 @@ public class CarController {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    VehicleView frame;
+    VehicleModel model;
     // A list of vehicles, modify if needed
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-    //methods:
-
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        cc.vehicles.add(new Volvo240(0, 0));
-        cc.vehicles.add(new Saab95(100, 0));
-        cc.vehicles.add(new Scania(200, 0));
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("vehiclesim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
+    public VehicleController(VehicleView view, VehicleModel model) {
+        this.frame = view;
+        this.model = model;
     }
 
     /* Each step the TimerListener moves all the vehicles in the list and tells the
