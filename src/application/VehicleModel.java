@@ -1,13 +1,21 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.awt.*;
 
 import cars.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+
 
 public class VehicleModel {
 
+    private final int delay = 50;
     ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-    
+    private Timer timer = new Timer(delay, new TimerListener());
     public VehicleModel() {
 
     }
@@ -21,7 +29,19 @@ public class VehicleModel {
     }
 
     public void start() {
-        
+
+        while(true)  {
+            update();
+        }
+
+    }
+
+    private class TimerListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            for (Vehicle vehicle : vehicles) {
+                vehicle.move();
+            }
+        }
     }
 
     // Controller Methods
