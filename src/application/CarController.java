@@ -21,7 +21,7 @@ public class CarController {
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+    public Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -30,20 +30,6 @@ public class CarController {
 
     //methods:
 
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        cc.vehicles.add(new Volvo240(0, 0));
-        cc.vehicles.add(new Saab95(100, 0));
-        cc.vehicles.add(new Scania(200, 0));
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("vehiclesim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
-    }
 
     /* Each step the TimerListener moves all the vehicles in the list and tells the
     * view to update its images. Change this method to your needs.
