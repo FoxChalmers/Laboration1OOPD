@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    ArrayList<Vehicle> vehicles;
+    ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
     public void renderNextFrame(ArrayList<Vehicle> vehicles) {
         this.vehicles = vehicles;
