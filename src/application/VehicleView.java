@@ -6,6 +6,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -15,11 +16,11 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class VehicleView extends JFrame{
+public class VehicleView extends JFrame implements Observable{
     private static final int X = 800;
     private static final int Y = 800;
 
-    ICarController carController;
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
 
     // The controller member
     VehicleModel vehicleModel;
@@ -47,6 +48,20 @@ public class VehicleView extends JFrame{
     public VehicleView(VehicleModel model){
         this.vehicleModel = model;
         initComponents();
+    }
+
+    public void updateObservers() {
+        for (Observer o: observers) {
+            o.updateState();
+        }
+    }
+
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    public void removeObserver(Observer o) {
+        observers.remove(o);
     }
 
     // Sets everything in place and fits everything

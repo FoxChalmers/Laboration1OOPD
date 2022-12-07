@@ -31,6 +31,7 @@ public class VehicleTest {
 
         Volvo240 volvo = new Volvo240(0,0);
         Point oldCoordinate = volvo.getCoordinate();
+        volvo.startEngine();
         volvo.gas(1);
         volvo.move();
         Point newCoordinate = volvo.getCoordinate();
@@ -43,6 +44,7 @@ public class VehicleTest {
     public void move_should_change_position_correctly() {
 
         Volvo240 volvo = new Volvo240(0,0);
+        volvo.startEngine();
         volvo.gas(1);
         volvo.move();
         Point newCoordinate = volvo.getCoordinate();
@@ -70,6 +72,7 @@ public class VehicleTest {
     public void stop_engine_should_make_current_speed_zero() {
         
         Volvo240 volvo = new Volvo240(0,0);
+        volvo.startEngine();
         volvo.gas(1);
         volvo.stopEngine();
         assertEquals(0, volvo.getCurrentSpeed(), 0);

@@ -9,13 +9,13 @@ public class CarLoaderTest {
  
     @Test
     public void carloader_cannot_unload_empty_carloader() {
-        CarTransporter carTransporter = new CarTransporter();
+        CarTransporter carTransporter = new CarTransporter(0, 0);
         assertThrows(IllegalStateException.class, () -> carTransporter.unloadCar());
     }
 
     @Test
     public void carloader_cannot_load_full_carloader() {
-        CarTransporter carTransporter = new CarTransporter();
+        CarTransporter carTransporter = new CarTransporter(0, 0);
 
         for (int i = 0; i < carTransporter.getMaxLoad(); i++) {
             carTransporter.loadCar(new Volvo240(0, 0));
@@ -25,7 +25,7 @@ public class CarLoaderTest {
 
     @Test
     public void carloader_will_not_load_car_with_distance_over_20() {
-        CarTransporter carTransporter = new CarTransporter();
+        CarTransporter carTransporter = new CarTransporter(0, 0);
         Volvo240 volvo = new Volvo240(0, 0);
         volvo.setX(21);
         assertThrows(IllegalStateException.class, () -> carTransporter.loadCar(volvo));

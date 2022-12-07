@@ -10,11 +10,12 @@ public class TurboCarTest {
       Saab95 saab = new Saab95(0,0);
 
       double oldSpeed = saab.getCurrentSpeed();
+      saab.startEngine();
       saab.gas(1);
       double newSpeed = saab.getCurrentSpeed();
       saab.gas(1);
   
-      assertEquals(1.25, newSpeed - oldSpeed, 0);
+      assertEquals(2, newSpeed - oldSpeed, 0);
 
     }
     

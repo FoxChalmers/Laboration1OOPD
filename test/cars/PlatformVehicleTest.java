@@ -9,6 +9,7 @@ public class PlatformVehicleTest {
     public void vehicle_cannot_raise_platform_when_not_stationary() {
 
         Scania scania = new Scania(0,0);
+        scania.startEngine();
         scania.gas(1);
         assertThrows(IllegalStateException.class, () -> scania.raisePlatform());
 
@@ -18,6 +19,7 @@ public class PlatformVehicleTest {
     public void vehicle_cannot_lower_platform_when_not_stationary() {
 
         Scania scania = new Scania(0,0);
+        scania.startEngine();
         scania.gas(1);
         assertThrows(IllegalStateException.class, () -> scania.lowerPlatform());
 

@@ -197,4 +197,6 @@ public abstract class Vehicle implements Movable {
         currentSpeed = Math.max(currentSpeed - speedFactor() * amount, 0);
     }
 
+    public abstract void drawImage(Graphics g);
+
 }

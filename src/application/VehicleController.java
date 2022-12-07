@@ -1,12 +1,7 @@
 package application;
 
-import cars.*;
-import javax.swing.*;
-
 import cars.Vehicle;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /*
@@ -15,40 +10,27 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class VehicleController {
-    // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+public class VehicleController implements Observer {
 
     // The frame that represents this instance View of the MVC pattern
     VehicleView frame;
+
+    // The model representing the state of the vehicles
     VehicleModel model;
-    // A list of vehicles, modify if needed
-    ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+    // list of vehicles.
+    ArrayList<Vehicle> vehicles;
 
     public VehicleController(VehicleView view, VehicleModel model) {
         this.frame = view;
         this.model = model;
+        this.vehicles = model.getVehicles();
+        model.addObserver(this);
     }
 
-    /* Each step the TimerListener moves all the vehicles in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.move();
-                int x = (int) Math.round(vehicle.getX());
-                int y = (int) Math.round(vehicle.getY());
-                frame.drawPanel.moveit(x,y, vehicle);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-            }
-        }
+    public void updateState() {
+        frame.drawPanel.renderNextFrame(vehicles);
     }
+    
 
 }

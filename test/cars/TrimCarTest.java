@@ -12,11 +12,12 @@ public class TrimCarTest {
       Volvo240 volvo = new Volvo240(0,0);
 
       double oldSpeed = volvo.getCurrentSpeed();
+      volvo.startEngine();
       volvo.gas(1);
       double newSpeed = volvo.getCurrentSpeed();
       volvo.gas(1);
   
-      assertEquals(1.25, newSpeed - oldSpeed, 0);
+      assertEquals(1.875, newSpeed - oldSpeed, 0);
 
     }
 
