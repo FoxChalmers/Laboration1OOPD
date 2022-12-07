@@ -9,10 +9,12 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
     private CarLoader carLoader;
 
     // Constructor
-    CarTransporter() {
+    CarTransporter(int x, int y) {
         super(2, Color.BLUE, "Car Transport", new TrimEngine(100), 0, 0);
         this.platform = new Platform();
         this.carLoader = new CarLoader(8, this);
+        setX(x);
+        setY(y);
     }
 
     // Raises the ramp of CarTransport.

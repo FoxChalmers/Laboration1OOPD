@@ -19,6 +19,8 @@ public class VehicleView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
+    ICarController carController;
+
     // The controller member
     VehicleModel vehicleModel;
 
@@ -51,7 +53,7 @@ public class VehicleView extends JFrame{
     // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents() {
 
-        this.setTitle("Goten Tag");
+        this.setTitle("vehiclesim 1.0");
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
@@ -106,56 +108,56 @@ public class VehicleView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                vehicleModel.gas(gasAmount);
             }
         });
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount);
+                vehicleModel.brake(gasAmount);
             }
         });
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.startEngine();
+                vehicleModel.startEngine();
             }
         });
 
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.stopEngine();
+                vehicleModel.stopEngine();
             }
         });
 
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.liftPlatform();
+                vehicleModel.liftPlatform();
             }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerPlatform();
+                vehicleModel.lowerPlatform();
             }
         });
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.TurboOn();
+                vehicleModel.TurboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.TurboOff();
+                vehicleModel.TurboOff();
             }
         });
 
