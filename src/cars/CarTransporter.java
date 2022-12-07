@@ -1,6 +1,6 @@
 package cars;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class CarTransporter extends Vehicle implements HasCarLoader {
 
@@ -74,6 +74,10 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
 
     public int getMaxLoad() {
         return carLoader.getMaxLoad();
+    }
+
+    public void drawImage(Graphics g) {
+
     }
 
 }

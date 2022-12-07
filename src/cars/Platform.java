@@ -24,6 +24,14 @@ public class Platform {
         tiltAngle = newAngle;
     }
 
+    public void raiseToTop() {
+        tiltAngle = tiltAngleLimit;
+    }
+
+    public void lowerToBottom() {
+        tiltAngle = 0;
+    }
+
 
 
     ////// GETTERS AND SETTERS ///////
