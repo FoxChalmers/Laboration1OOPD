@@ -27,8 +27,9 @@ public class Volvo240 extends Vehicle implements Car {
         return getEngine().speedFactor();
     }
 
-
+    @Override
     public void drawImage(Graphics g) {
+
         g.drawImage(volvoImage, getX(), getY(), null);
     }
 

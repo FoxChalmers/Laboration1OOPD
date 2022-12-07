@@ -3,10 +3,12 @@ package application;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import cars.*;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -16,7 +18,7 @@ import java.util.ArrayList;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class VehicleView extends JFrame implements Observable{
+public class VehicleView extends JFrame implements Observer{
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -24,6 +26,7 @@ public class VehicleView extends JFrame implements Observable{
 
     // The controller member
     VehicleModel vehicleModel;
+    VehicleController vehicleController;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -45,36 +48,29 @@ public class VehicleView extends JFrame implements Observable{
     JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public VehicleView(VehicleModel model){
+    public VehicleView(VehicleModel model, VehicleController vc){
         this.vehicleModel = model;
+        this.vehicleController = vc;
         initComponents();
+
+        model.addObserver(this);
+
     }
 
-    public void updateObservers() {
-        for (Observer o: observers) {
-            o.updateState();
-        }
-    }
-
-    public void addObserver(Observer o) {
-        observers.add(o);
-    }
-
-    public void removeObserver(Observer o) {
-        observers.remove(o);
+    public void updateState() {
+        drawPanel.renderNextFrame(vehicleModel.getVehicles());
     }
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents() {
 
+
         this.setTitle("vehiclesim 1.0");
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
@@ -123,56 +119,56 @@ public class VehicleView extends JFrame implements Observable{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.gas(gasAmount);
+                vehicleController.gas(gasAmount);
             }
         });
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.brake(gasAmount);
+                vehicleController.brake(gasAmount);
             }
         });
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.startEngine();
+                vehicleController.startEngine();
             }
         });
 
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.stopEngine();
+                vehicleController.stopEngine();
             }
         });
 
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.liftPlatform();
+                vehicleController.liftPlatform();
             }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.lowerPlatform();
+                vehicleController.lowerPlatform();
             }
         });
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.TurboOn();
+                vehicleController.TurboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                vehicleModel.TurboOff();
+                vehicleController.TurboOff();
             }
         });
 

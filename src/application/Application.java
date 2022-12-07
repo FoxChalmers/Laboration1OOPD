@@ -7,8 +7,9 @@ public class Application {
 
 
         VehicleModel vehicleModel = VehicleModelFactory.makeDefaultMode();
-        VehicleView vehicleView = new VehicleView(vehicleModel);
-        VehicleController vehicleController = new VehicleController(vehicleView, vehicleModel);
+        VehicleController vehicleController = new VehicleController(vehicleModel);
+        VehicleView vehicleView = new VehicleView(vehicleModel, vehicleController);
+
 
         vehicleModel.start();
 

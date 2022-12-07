@@ -11,14 +11,21 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
     // Attributes
     private Platform platform;
     private CarLoader carLoader;
+    private BufferedImage CarTransporterImage;
 
     // Constructor
     CarTransporter(int x, int y) {
-        super(2, Color.BLUE, "Car Transport", new TrimEngine(100), 0, 0);
+        super(2, Color.BLUE, "Car Transport", new TrimEngine(100), x, y);
         this.platform = new Platform();
         this.carLoader = new CarLoader(8, this);
-        setX(x);
-        setY(y);
+        try {
+            this.CarTransporterImage = ImageIO.read(new File("src/application/pics/CarTransporter.jpeg"));
+        }
+        catch (IOException ex) {
+
+        }
+
+
     }
 
     // Raises the ramp of CarTransport.
@@ -82,8 +89,9 @@ public class CarTransporter extends Vehicle implements HasCarLoader {
         return carLoader.getMaxLoad();
     }
 
+    @Override
     public void drawImage(Graphics g) {
-
+        g.drawImage(CarTransporterImage, getX(), getY(), null);
     }
 
 }

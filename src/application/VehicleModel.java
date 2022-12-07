@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 
 
-public class VehicleModel {
+public class VehicleModel implements Observable {
 
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     private final int delay = 50;
@@ -34,7 +34,7 @@ public class VehicleModel {
                 // Move cars
                 vehicle.move();
 
-                // Render cars
+                // Call observers
                 updateObservers();
 
             }
@@ -45,6 +45,10 @@ public class VehicleModel {
         observers.add(o);
     }
 
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
     public void updateObservers() {
         for (Observer o: observers) {
             o.updateState();
@@ -53,76 +57,11 @@ public class VehicleModel {
 
     // Controller Methods
 
-        // Calls the gas method for each car once
-        void gas(int amount) {
-            double gas = ((double) amount) / 100;
-            for (Vehicle vehicle : vehicles) {
-                vehicle.gas(gas);
-            }
-        }
-    
-        // Calls brake for each car once.
-        void brake(int amount) {
-            double brake = ((double) amount) / 100;
-            for( Vehicle vehicle: vehicles) {
-                vehicle.brake(brake);
-            }
-        }
-        
-        // Calls startEngine for each car once.
-        void startEngine() {
-            for (Vehicle vehicle: vehicles) {
-                vehicle.startEngine();
-            }
-        }
-    
-        // Calls stopEngine for each car once.
-        void stopEngine() {
-            for (Vehicle vehicle: vehicles) {
-                vehicle.stopEngine();
-            }
-        }
-    
-        // Raises platform for all scanias once.
-        void liftPlatform() {
-            for (Vehicle vehicle: vehicles) {
-                if (vehicle instanceof Scania) {
-                    Scania scania = (Scania) vehicle;
-                    scania.raisePlatform();
-                }
-            }
-        }
-    
-        void lowerPlatform() {
-            for (Vehicle vehicle: vehicles) {
-                if (vehicle instanceof Scania) {
-                    Scania scania = (Scania) vehicle;
-                    scania.lowerPlatform();
-                }
-            }
-        }
-    
-        void TurboOn() {
-            for (Vehicle vehicle: vehicles) {
-                if (vehicle instanceof Saab95) {
-                    Saab95 saab95 = (Saab95) vehicle;
-                    saab95.setTurboOn();
-                }
-            }
-        }
-    
-        void TurboOff() {
-            for (Vehicle vehicle: vehicles) {
-                if (vehicle instanceof Saab95) {
-                    Saab95 saab95 = (Saab95) vehicle;
-                    saab95.setTurboOff();
-                }
-            }
-        }
 
-        public ArrayList<Vehicle> getVehicles() {
-            return vehicles;
-        }
+
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
 
 }
 
