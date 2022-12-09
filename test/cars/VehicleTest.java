@@ -75,7 +75,7 @@ public class VehicleTest {
         volvo.startEngine();
         volvo.gas(1);
         volvo.stopEngine();
-        assertEquals(0, volvo.getCurrentSpeed(), 0);
+        assertEquals(0, volvo.getCurrentSpeed(), 0.1);
         
     }
 

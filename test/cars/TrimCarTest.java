@@ -17,7 +17,7 @@ public class TrimCarTest {
       double newSpeed = volvo.getCurrentSpeed();
       volvo.gas(1);
   
-      assertEquals(1.875, newSpeed - oldSpeed, 0);
+      assertEquals(1.875, newSpeed - oldSpeed, 0.1);
 
     }
 

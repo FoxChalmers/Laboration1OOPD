@@ -15,7 +15,7 @@ public class TurboCarTest {
       double newSpeed = saab.getCurrentSpeed();
       saab.gas(1);
   
-      assertEquals(2, newSpeed - oldSpeed, 0);
+      assertEquals(2, newSpeed - oldSpeed, 0.1);
 
     }
     
@@ -23,7 +23,7 @@ public class TurboCarTest {
     public void test_if_turbo_on_gives_correct_speedfactor() {
       Saab95 saab95 = new Saab95(0,0);
       saab95.setTurboOn();
-      assertEquals(saab95.getEnginePower()* 0.01 * 1.3, saab95.speedFactor(), 0);
+      assertEquals(saab95.getEnginePower()* 0.01 * 1.3, saab95.speedFactor(), 0.1);
     }
   
     @Test
@@ -31,7 +31,7 @@ public class TurboCarTest {
       Saab95 saab95 = new Saab95(0,0);
       saab95.setTurboOn();
       saab95.setTurboOff();
-      assertEquals(saab95.getEnginePower() * 0.01, saab95.speedFactor(), 0);
+      assertEquals(saab95.getEnginePower() * 0.01, saab95.speedFactor(), 0.1);
       
     }
 

@@ -29,7 +29,6 @@ public class Volvo240 extends Vehicle implements Car {
 
     @Override
     public void drawImage(Graphics g) {
-
         g.drawImage(volvoImage, getX(), getY(), null);
     }
 
