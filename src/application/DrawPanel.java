@@ -1,4 +1,5 @@
 package application;
+
 import cars.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -6,7 +7,7 @@ import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel {
 
     ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
@@ -27,12 +28,12 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+
         // Draw images of all vehicles.
-        for (Vehicle v: vehicles) {
+        for (Vehicle v : vehicles) {
             v.drawImage(g);
         }
-         
+
     }
 
 }

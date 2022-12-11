@@ -10,8 +10,8 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private Engine engine;
-
+    private Engine engine;  // The engine used by the vehicle
+    
 
     private int x, y = 0; // Coordinates
 

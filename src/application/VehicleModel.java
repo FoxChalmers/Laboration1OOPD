@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 
 
-public class VehicleModel implements Observable {
+public class VehicleModel implements IVehicleModel {
 
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     private final int delay = 50;
@@ -21,12 +21,14 @@ public class VehicleModel implements Observable {
         vehicles.add(vehicle);
     }
 
+    // Starts the timer.
     public void start() {
 
         timer.start();
 
     }
 
+    // Gets called each frame
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
@@ -41,26 +43,28 @@ public class VehicleModel implements Observable {
         }
     }
 
+    // Adds observer to observer list.
     public void addObserver(Observer o) {
         observers.add(o);
     }
 
+    // Removes observer to observer list.
     public void removeObserver(Observer o) {
         observers.remove(o);
     }
 
+    // Calls updateState() on all observers.
     public void updateObservers() {
         for (Observer o: observers) {
             o.updateState();
         }
     }
 
-    // Controller Methods
-
-
 
     public ArrayList<Vehicle> getVehicles() {
-        return vehicles;
+        // Creates a copy of vehicles and returns it.
+        ArrayList<Vehicle> newList = new ArrayList<Vehicle>(vehicles);
+        return newList;
     }
 
 }

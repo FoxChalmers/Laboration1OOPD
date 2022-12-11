@@ -10,87 +10,84 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class VehicleController {
-
+public class VehicleController implements IVehicleController {
 
     // The model representing the state of the vehicles
-    VehicleModel model;
+    IVehicleModel model;
 
     // list of vehicles.
     ArrayList<Vehicle> vehicles;
 
-    public VehicleController(VehicleModel model) {
+    public VehicleController(IVehicleModel model) {
         this.model = model;
         this.vehicles = model.getVehicles();
     }
 
+    // Calls the gas method for each car once
+    public void gas(int amount) {
+        double gas = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.gas(gas);
+        }
+    }
 
-            // Calls the gas method for each car once
-            void gas(int amount) {
-                double gas = ((double) amount) / 100;
-                for (Vehicle vehicle : vehicles) {
-                    vehicle.gas(gas);
-                }
+    // Calls brake for each car once.
+    public void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.brake(brake);
+        }
+    }
+
+    // Calls startEngine for each car once.
+    public void startEngine() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+
+    // Calls stopEngine for each car once.
+    public void stopEngine() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
+    }
+
+    // Raises platform for all scanias once.
+    public void liftPlatform() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.raisePlatform();
             }
-        
-            // Calls brake for each car once.
-            void brake(int amount) {
-                double brake = ((double) amount) / 100;
-                for( Vehicle vehicle: vehicles) {
-                    vehicle.brake(brake);
-                }
+        }
+    }
+
+    public void lowerPlatform() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.lowerPlatform();
             }
-            
-            // Calls startEngine for each car once.
-            void startEngine() {
-                for (Vehicle vehicle: vehicles) {
-                    vehicle.startEngine();
-                }
+        }
+    }
+
+    public void TurboOn() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOn();
             }
-        
-            // Calls stopEngine for each car once.
-            void stopEngine() {
-                for (Vehicle vehicle: vehicles) {
-                    vehicle.stopEngine();
-                }
+        }
+    }
+
+    public void TurboOff() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOff();
             }
-        
-            // Raises platform for all scanias once.
-            void liftPlatform() {
-                for (Vehicle vehicle: vehicles) {
-                    if (vehicle instanceof Scania) {
-                        Scania scania = (Scania) vehicle;
-                        scania.raisePlatform();
-                    }
-                }
-            }
-        
-            void lowerPlatform() {
-                for (Vehicle vehicle: vehicles) {
-                    if (vehicle instanceof Scania) {
-                        Scania scania = (Scania) vehicle;
-                        scania.lowerPlatform();
-                    }
-                }
-            }
-        
-            void TurboOn() {
-                for (Vehicle vehicle: vehicles) {
-                    if (vehicle instanceof Saab95) {
-                        Saab95 saab95 = (Saab95) vehicle;
-                        saab95.setTurboOn();
-                    }
-                }
-            }
-        
-            void TurboOff() {
-                for (Vehicle vehicle: vehicles) {
-                    if (vehicle instanceof Saab95) {
-                        Saab95 saab95 = (Saab95) vehicle;
-                        saab95.setTurboOff();
-                    }
-                }
-            }
-    
+        }
+    }
 
 }
