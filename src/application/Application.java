@@ -1,10 +1,12 @@
 package application;
 
+
 import cars.VehicleModelFactory;
 
 public class Application {
 
     public static void main(String[] args) {
+
 
         // Create model, controller and view.
         IVehicleModel vehicleModel = VehicleModelFactory.makeDefaultMode();
@@ -15,5 +17,6 @@ public class Application {
         vehicleModel.start();
 
     }
+
 
 }
