@@ -13,14 +13,14 @@ public class VehicleView extends JFrame implements IVehicleView  {
     private IVehicleModel vehicleModel;
 
     private DrawPanel drawPanel = new DrawPanel(X, Y-240);
-    private JPanel ControllerInterface;
+    private JPanel vehicleControllerInterface;
 
 
 
     // Constructor
-    public VehicleView(IVehicleModel model, IVehicleController controller) {
+    public VehicleView(IVehicleModel model, IVehicleController vehicleController) {
         this.vehicleModel = model;
-        this.ControllerInterface = controller.createControllerInterface();
+        this.vehicleControllerInterface = vehicleController.getControllerInterface();
 
         initView();
 
@@ -29,22 +29,24 @@ public class VehicleView extends JFrame implements IVehicleView  {
 
     }
 
+    // Renders next frame
     public void updateState() {
         drawPanel.renderNextFrame(vehicleModel.getVehicles());
     }
 
-    public DrawPanel getDrawPanel() {
-        return drawPanel;
-    }
 
+
+
+    // Initializes the view.
     public void initView() {
 
         this.setTitle("vehiclesim 1.0");
         this.setPreferredSize(new Dimension(X, Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
+        // Adds drawpanel and controller interface to view.
         this.add(drawPanel);
-        this.add(ControllerInterface);
+        this.add(vehicleControllerInterface);
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.

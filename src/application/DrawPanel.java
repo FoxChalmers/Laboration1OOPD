@@ -3,13 +3,14 @@ package application;
 import cars.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel {
 
-    ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
     // Updates local vehicles to that of Model and renders next frame.
     public void renderNextFrame(ArrayList<Vehicle> vehicles) {

@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Timer;
 
 import cars.*;
@@ -12,11 +13,12 @@ import java.awt.event.ActionListener;
 
 public class VehicleModel implements IVehicleModel {
 
-    private ArrayList<Observer> observers = new ArrayList<Observer>();
+    private List<Observer> observers = new ArrayList<Observer>();
     private final int delay = 50;
-    private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
     private Timer timer = new Timer(delay, new TimerListener());
 
+    // Adds the given vehicle into the classes vehicle list.
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
     }
@@ -38,7 +40,6 @@ public class VehicleModel implements IVehicleModel {
 
                 // Call observers
                 updateObservers();
-
 
             }
         }
@@ -69,72 +70,75 @@ public class VehicleModel implements IVehicleModel {
     }
 
 
-        // Calls the gas method for each car once
-        public void gas(int amount) {
-            double gas = ((double) amount) / 100;
-            for (Vehicle vehicle : vehicles) {
-                vehicle.gas(gas);
-            }
+    // Calls the gas method for each car once
+    public void gas(int amount) {
+        double gas = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.gas(gas);
         }
+    }
     
-        // Calls brake for each car once.
-        public void brake(int amount) {
-            double brake = ((double) amount) / 100;
-            for (Vehicle vehicle : vehicles) {
-                vehicle.brake(brake);
-            }
+    // Calls brake for each car once.
+    public void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles) {
+            vehicle.brake(brake);
         }
+    }
     
-        // Calls startEngine for each car once.
-        public void startEngine() {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.startEngine();
+    // Calls startEngine for each car once.
+    public void startEngine() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+
+    // Calls stopEngine for each car once.
+    public void stopEngine() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
+    }
+
+    // Raises platform for all scanias once.
+    public void liftPlatform() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.raisePlatform();
             }
         }
-    
-        // Calls stopEngine for each car once.
-        public void stopEngine() {
-            for (Vehicle vehicle : vehicles) {
-                vehicle.stopEngine();
+    }
+
+    // Lowers platform for all scanias once.
+    public void lowerPlatform() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                Scania scania = (Scania) vehicle;
+                scania.lowerPlatform();
             }
         }
-    
-        // Raises platform for all scanias once.
-        public void liftPlatform() {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Scania) {
-                    Scania scania = (Scania) vehicle;
-                    scania.raisePlatform();
-                }
+    }
+
+    // Activates turbo for all saab95.
+    public void turboOn() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOn();
             }
         }
-    
-        public void lowerPlatform() {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Scania) {
-                    Scania scania = (Scania) vehicle;
-                    scania.lowerPlatform();
-                }
+    }
+
+    // Deactivate turbo for all saab95.
+    public void turboOff() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                Saab95 saab95 = (Saab95) vehicle;
+                saab95.setTurboOff();
             }
         }
-    
-        public void TurboOn() {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Saab95) {
-                    Saab95 saab95 = (Saab95) vehicle;
-                    saab95.setTurboOn();
-                }
-            }
-        }
-    
-        public void TurboOff() {
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle instanceof Saab95) {
-                    Saab95 saab95 = (Saab95) vehicle;
-                    saab95.setTurboOff();
-                }
-            }
-        }
+    }
 
 }
 

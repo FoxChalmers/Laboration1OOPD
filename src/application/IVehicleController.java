@@ -4,6 +4,6 @@ import javax.swing.JPanel;
 
 public interface IVehicleController {
     
-    public JPanel createControllerInterface();
+    public JPanel getControllerInterface();
 
 }

@@ -1,17 +1,5 @@
 package application;
 
-import cars.*;
-
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -20,55 +8,42 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
- */
 
 public class VehicleController implements IVehicleController {
 
     private static final int X = 800;
-    private static final int Y = 800;
 
     // The model representing the state of the vehicles
-    IVehicleModel model;
-    VehicleView view;
-    DrawPanel frame = new DrawPanel(X, Y);
+    private IVehicleModel model;
+    private JPanel controllerInterface;
 
-    // list of vehicles.
-    ArrayList<Vehicle> vehicles;
 
     // Buttons
 
-    JPanel controlPanel = new JPanel();
+    private JPanel controlPanel = new JPanel();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    private JPanel gasPanel = new JPanel();
+    private JSpinner gasSpinner = new JSpinner();
+    private int gasAmount = 0;
+    private JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    private JButton gasButton = new JButton("Gas");
+    private JButton brakeButton = new JButton("Brake");
+    private JButton turboOnButton = new JButton("Saab Turbo on");
+    private JButton turboOffButton = new JButton("Saab Turbo off");
+    private JButton liftBedButton = new JButton("Scania Lift Bed");
+    private JButton lowerBedButton = new JButton("Lower Lift Bed");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    private JButton startButton = new JButton("Start all cars");
+    private JButton stopButton = new JButton("Stop all cars");
 
     public VehicleController(IVehicleModel model) {
         this.model = model;
-
-
-        this.vehicles = model.getVehicles();
+        this.controllerInterface = createControllerInterface();
         initbuttons();
     }
 
-
     private void initbuttons() {
-        
 
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, // initial value
                 0, // min
@@ -84,7 +59,6 @@ public class VehicleController implements IVehicleController {
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-
 
         controlPanel.setLayout(new GridLayout(2, 4));
 
@@ -104,7 +78,6 @@ public class VehicleController implements IVehicleController {
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-
 
         gasButton.addActionListener(new ActionListener() {
             @Override
@@ -151,28 +124,34 @@ public class VehicleController implements IVehicleController {
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.TurboOn();
+                model.turboOn();
             }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.TurboOff();
+                model.turboOff();
             }
         });
 
     }
 
-    public JPanel createControllerInterface() {
+    private JPanel createControllerInterface() {
+
         JPanel controllerInterface = new JPanel();
+
+        // Components to add
         controllerInterface.add(gasPanel);
         controllerInterface.add(controlPanel);
         controllerInterface.add(startButton);
         controllerInterface.add(stopButton);
+
         return controllerInterface;
     }
 
-
+    public JPanel getControllerInterface() {
+        return controllerInterface;
+    }
 
 }

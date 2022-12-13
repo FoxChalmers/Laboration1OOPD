@@ -16,7 +16,7 @@ public interface IVehicleModel extends Observable {
     public void stopEngine();
     public void liftPlatform();
     public void lowerPlatform();
-    public void TurboOn();
-    public void TurboOff();
+    public void turboOn();
+    public void turboOff();
 
 }
