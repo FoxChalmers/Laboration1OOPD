@@ -28,7 +28,6 @@ public class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         // Draw images of all vehicles.
         for (Vehicle v : vehicles) {
             v.drawImage(g);
