@@ -39,6 +39,7 @@ public class VehicleModel implements IVehicleModel {
                 // Call observers
                 updateObservers();
 
+
             }
         }
     }

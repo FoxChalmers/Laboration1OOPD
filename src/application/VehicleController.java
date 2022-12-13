@@ -39,7 +39,6 @@ public class VehicleController extends JFrame implements IVehicleController {
     ArrayList<Vehicle> vehicles;
 
     // Buttons
-   // DrawPanel drawPanel = new DrawPanel(X, Y - 240);
 
     JPanel controlPanel = new JPanel();
 

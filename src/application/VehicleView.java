@@ -9,10 +9,9 @@ public class VehicleView implements IVehicleView {
     private static final int Y = 800;
 
     // The controller member
-    IVehicleModel vehicleModel;
-    IVehicleController vehicleController;
+    private IVehicleModel vehicleModel;;
 
-    DrawPanel drawPanel;
+    private DrawPanel drawPanel;
 
 
 
@@ -26,8 +25,6 @@ public class VehicleView implements IVehicleView {
         model.addObserver(this);
 
     }
-
-
 
     public void updateState() {
         drawPanel.renderNextFrame(vehicleModel.getVehicles());
