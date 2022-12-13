@@ -1,13 +1,14 @@
 package application;
 
-import javax.swing.JFrame;
 
 import cars.VehicleModelFactory;
 
 public class Application {
 
-    public static void main(String[] args) {
+    private static final int X = 800;
+    private static final int Y = 800;
 
+    public static void main(String[] args) {
 
 
         // Create model, controller and view.

@@ -1,7 +1,9 @@
 package application;
 
+import javax.swing.JPanel;
+
 public interface IVehicleController {
     
-    public DrawPanel getDrawPanel();
+    public JPanel createControllerInterface();
 
 }

@@ -26,14 +26,15 @@ import java.awt.event.ActionListener;
 * modifying the model state and the updating the view.
  */
 
-public class VehicleController extends JFrame implements IVehicleController {
+public class VehicleController implements IVehicleController {
 
     private static final int X = 800;
     private static final int Y = 800;
-    DrawPanel drawPanel = new DrawPanel(X, Y - 240);
 
     // The model representing the state of the vehicles
     IVehicleModel model;
+    VehicleView view;
+    DrawPanel frame = new DrawPanel(X, Y);
 
     // list of vehicles.
     ArrayList<Vehicle> vehicles;
@@ -59,21 +60,17 @@ public class VehicleController extends JFrame implements IVehicleController {
 
     public VehicleController(IVehicleModel model) {
         this.model = model;
+
+
         this.vehicles = model.getVehicles();
         initbuttons();
     }
 
-    public DrawPanel getDrawPanel() {
-        return drawPanel;
-    }
 
     private void initbuttons() {
         
-        this.setTitle("vehiclesim 1.0");
-        this.setPreferredSize(new Dimension(X, Y));
-        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-        this.add(drawPanel);
+        //this.add(frame);
 
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, // initial value
                 0, // min
@@ -90,7 +87,7 @@ public class VehicleController extends JFrame implements IVehicleController {
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
-        this.add(gasPanel);
+        ////this.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2, 4));
 
@@ -101,18 +98,18 @@ public class VehicleController extends JFrame implements IVehicleController {
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
-        this.add(controlPanel);
+        ////this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(startButton);
+        ////this.add(startButton);
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(stopButton);
+        ////this.add(stopButton);
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
@@ -172,7 +169,7 @@ public class VehicleController extends JFrame implements IVehicleController {
             }
         });
 
-        // Make the frame pack all it's components by respecting the sizes if possible.
+       /*  // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
         // Get the computer screen resolution
@@ -182,7 +179,18 @@ public class VehicleController extends JFrame implements IVehicleController {
         // Make the frame visible
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
+    }
+
+
+
+    public JPanel createControllerInterface() {
+        JPanel controllerInterface = new JPanel();
+        controllerInterface.add(controlPanel);
+        controllerInterface.add(gasPanel);
+        controllerInterface.add(startButton);
+        controllerInterface.add(stopButton);
+        return controllerInterface;
     }
 
 
