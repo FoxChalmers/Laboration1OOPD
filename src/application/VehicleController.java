@@ -4,13 +4,15 @@ import cars.*;
 
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 /*
 * This class represents the Controller part in the MVC pattern.
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
 * modifying the model state and the updating the view.
  */
 
-public class VehicleController implements IVehicleController {
+public class VehicleController extends JPanel implements IVehicleController {
 
     // The model representing the state of the vehicles
     IVehicleModel model;
