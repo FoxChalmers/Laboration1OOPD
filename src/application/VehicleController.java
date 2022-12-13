@@ -70,8 +70,6 @@ public class VehicleController implements IVehicleController {
     private void initbuttons() {
         
 
-        //this.add(frame);
-
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, // initial value
                 0, // min
                 100, // max
@@ -87,7 +85,6 @@ public class VehicleController implements IVehicleController {
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
 
-        ////this.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2, 4));
 
@@ -98,21 +95,17 @@ public class VehicleController implements IVehicleController {
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
-        ////this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        ////this.add(startButton);
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        ////this.add(stopButton);
 
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
+
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,25 +162,12 @@ public class VehicleController implements IVehicleController {
             }
         });
 
-       /*  // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
-
-        // Get the computer screen resolution
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        // Center the frame
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        // Make the frame visible
-        this.setVisible(true);
-        // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
     }
-
-
 
     public JPanel createControllerInterface() {
         JPanel controllerInterface = new JPanel();
-        controllerInterface.add(controlPanel);
         controllerInterface.add(gasPanel);
+        controllerInterface.add(controlPanel);
         controllerInterface.add(startButton);
         controllerInterface.add(stopButton);
         return controllerInterface;

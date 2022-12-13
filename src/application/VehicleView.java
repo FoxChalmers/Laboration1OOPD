@@ -12,7 +12,7 @@ public class VehicleView extends JFrame implements IVehicleView  {
     // The controller member
     private IVehicleModel vehicleModel;
 
-    private DrawPanel drawPanel = new DrawPanel(X, Y);
+    private DrawPanel drawPanel = new DrawPanel(X, Y-240);
     private JPanel ControllerInterface;
 
 
@@ -43,9 +43,8 @@ public class VehicleView extends JFrame implements IVehicleView  {
         this.setPreferredSize(new Dimension(X, Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-
-        this.add(ControllerInterface);
         this.add(drawPanel);
+        this.add(ControllerInterface);
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.
